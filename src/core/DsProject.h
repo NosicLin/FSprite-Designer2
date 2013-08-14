@@ -23,8 +23,8 @@ class DsProject
 		DsSprite* getSprite(int index);
 		int spriteNu();
 
-		void addSprite(Sprite* sp);
-		void removeSprite(Sprite* sp);
+        void addSprite(DsSprite* sp);
+        void removeSprite(DsSprite* sp);
 
 
 
