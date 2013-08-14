@@ -10,7 +10,7 @@ class DsAnimtion;
 class DsSprite 
 {
 	public:
-		static DsProject* create();
+        static DsSprite* create();
 
 	public:
 		DsSprite();

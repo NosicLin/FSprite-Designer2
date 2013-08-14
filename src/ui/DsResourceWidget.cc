@@ -2,8 +2,11 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QStringList>
+
+#include "util/DsFileUtil.h"
 #include "ui/DsResourceWidget.h"
 #include "core/DsProject.h"
+#include "DsGlobal.h"
 
 
 DsResourceWidget::DsResourceWidget()
@@ -23,8 +26,7 @@ void DsResourceWidget::setNameFilters(const QStringList& list)
 
 void DsResourceWidget::slotCurProjectChange()
 {
-    //DsProject* proj=MdOperator::data()->getCurProject();
-    DsProject* proj=NULL;
+    DsProject* proj=DsGlobal::data()->getCurProject();
 
 	if(proj==NULL)
 	{
@@ -32,14 +34,12 @@ void DsResourceWidget::slotCurProjectChange()
 	}
 	else 
     {
-		/*
-        QModelIndex root=m_fileModel->setRootPath(proj->getDirName());
+        QModelIndex root=m_fileModel->setRootPath(proj->getProjectDir());
         m_resourceView->setModel(m_fileModel);
         m_resourceView->setRootIndex(root);
         m_resourceView->setColumnHidden(1,true);
         m_resourceView->setColumnHidden(2,true);
         m_resourceView->setColumnHidden(3,true);
-		*/
         //FS_TRACE_WARN("cur_path=%s",proj->getDirName().toStdString().c_str());
     }
 }
@@ -51,8 +51,8 @@ void DsResourceWidget::slotFileSelect(const QModelIndex& index)
         return ;
     }
     QString file_name=file_info.filePath();
-    //QString file_relative_name=DsUtil::toProjectPath(file_name);
-    //emit signalFileSelect(file_relative_name);
+    QString file_relative_name=DsFileUtil::toProjectPath(file_name.toStdString().c_str());
+    emit signalFileSelect(file_relative_name);
 
    // FS_TRACE_WARN("file_name=%s",file_relative_name.toStdString().c_str());
 }

@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "ui/DsViewWidget.h"
 
 DsViewWidget* DsViewWidget::create()
@@ -38,6 +39,7 @@ void DsViewWidget::mouseReleaseEvent(QMouseEvent* event)
 
 void DsViewWidget::mouseMoveEvent(QMouseEvent* event)
 {
+    qDebug()<<"DsViewWidget Move";
 }
 void DsViewWidget::wheelEvent(QWheelEvent* event)
 {
@@ -45,9 +47,12 @@ void DsViewWidget::wheelEvent(QWheelEvent* event)
 
 void DsViewWidget::enterEvent(QEvent* event)
 {
+    qDebug()<<"DsViewWidget Enter";
+
 }
 void DsViewWidget::leaveEvent(QEvent* event)
 {
+    qDebug()<<"DsViewWidget Level";
 }
 
 void DsViewWidget::keyPressEvent(QKeyEvent* event)

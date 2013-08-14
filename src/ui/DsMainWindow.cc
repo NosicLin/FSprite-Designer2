@@ -41,6 +41,7 @@ void DsMainWindow::init()
     QStringList filters;
     filters << "*.png" << "*.ttr" ;
     m_resourceWidget->setNameFilters(filters);
+    m_resourceWidget->slotCurProjectChange();
 	m_resourceDockWidget->setWidget(m_resourceWidget);
 	m_resourceDockWidget->setAllowedAreas(Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea);
 
