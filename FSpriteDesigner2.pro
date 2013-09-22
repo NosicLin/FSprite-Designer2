@@ -15,28 +15,11 @@ INCLUDEPATH +=  src \
 
 
 SOURCES += \
-    src/main.cpp \
-    src/main.cpp \
-    src/ui/DsResourceWidget.cc \
-    src/ui/DsMainWindow.cc \
-    src/ui/DsViewWidget.cc \
-    src/core/DsData.cc \
-    src/DsGlobal.cc \
-    src/core/DsProject.cc \
-    src/core/DsSprite.cc \
-    src/util/DsFileUtil.cc
+    src/widget/SdMainWindow.cc \
+    src/main.cc
 
 HEADERS  += \
-    src/DsMacros.h \
-    src/ui/DsMainWindow.h \
-    src/ui/DsViewWidget.h \
-    src/ui/DsResourceWidget.h \
-    src/ui/DsMainWindow.h \
-    src/core/DsData.h \
-    src/DsGlobal.h \
-    src/core/DsProject.h \
-    src/util/DsFileUtil.h
+    src/widget/SdMainWindow.h \
+    src/SdMacros.h
 
-RESOURCES += \
-    resource/images/res.qrc
 
