@@ -23,6 +23,7 @@ class SdMainWindow :public QMainWindow
         ~SdMainWindow();
 
     public:
+        void initWidget();
         void initMenuBar();
 
     public :
@@ -93,6 +94,13 @@ class SdMainWindow :public QMainWindow
         void onAboutAuthor();
         void onOnlineTutorial();
 
+
+
+    private:
+        SdViewEditWidget* m_viewEditWidget;
+
+
+        /* menu filed */
 	private:
 		QMenuBar* m_menuBar;
 

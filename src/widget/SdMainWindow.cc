@@ -1,4 +1,5 @@
 #include "widget/SdMainWindow.h"
+#include "widget/SdViewEditWidget.h"
 #include <QMenuBar>
 #include "SdMacros.h"
 
@@ -12,11 +13,18 @@ SdMainWindow*  SdMainWindow::create()
 SdMainWindow::SdMainWindow()
 {
 	initMenuBar();
+    initWidget();
 }
 
 SdMainWindow::~SdMainWindow()
 {
 
+}
+
+void SdMainWindow::initWidget()
+{
+    m_viewEditWidget=SdViewEditWidget::create();
+    setCentralWidget(m_viewEditWidget);
 }
 
 

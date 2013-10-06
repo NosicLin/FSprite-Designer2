@@ -16,10 +16,30 @@ INCLUDEPATH +=  src \
 
 SOURCES += \
     src/widget/SdMainWindow.cc \
-    src/main.cc
+    src/main.cc \
+    src/widget/SdViewEditWidget.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
-    src/SdMacros.h
+    src/SdMacros.h \
+    src/widget/SdViewEditWidget.h
+
+
+INCLUDEPATH +=faeris/lib/libfaeris/src \
+                         faeris/lib/lib3rdparty/c99/include \
+                         faeris/lib/lib3rdparty/freetype/include \
+                         faeris/lib/lib3rdparty/curl/include \
+                         faeris/lib/lib3rdparty/GL/include \
+                         faeris/lib/lib3rdparty/libpng/include \
+						 faeris/lib/lib3rdparty/pthread/include \
+
+
+win32 {
+
+        LIBS += -L$$PWD/faeris/lib/library/win32  -llibfaerisd   \
+                -L$$PWD/faeris/lib/library/win32/3rdparty -lcurld -lglew32 -llibpngd -lfreetype
+
+		CONFIG +=console
+}
 
 

@@ -9,7 +9,6 @@ int main(int argc,char** argv)
     win->setWindowTitle("FSprite Designer");
 	win->resize(1024,800);
 	win->showMaximized();
-
 	return app.exec();
 
 }
