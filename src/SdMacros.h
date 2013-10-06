@@ -60,17 +60,20 @@
 
 /* Widget */
 
-#define SD_M_TOOLBAR "ToolBar"
+#define SD_M_WIDGET "Widget"
+#define SD_M_TOOL_BAR "ToolBar"
 #define SD_M_RESOURCE_WIDGET "Resource Widget"
-#define SD_M_FRAME_EDIT_WIDGET "Frame Edit Widget"
+#define SD_M_ANIMATION_EDIT_WIDGET "Frame Edit Widget"
 #define SD_M_PROPERTY_EDIT_WIDGET "Property Edit Widget"
 
 
 /* Setting */
+#define SD_M_SETTING "Project"
 #define SD_M_PROJECT_SETTING "Project Setting"
 
 
 /* About */
+#define SD_M_ABOUT "About"
 #define SD_M_ABOUT_AUTHOR "About Author"
 #define SD_M_ONLINE_TUTORIAL "Online Tutorial"
 
@@ -130,13 +133,15 @@
 
 /* Widget */
 
-#define SD_I_TOOLBAR "ToolBar"
+#define SD_I_TOOL_BAR "ToolBar"
+
 #define SD_I_RESOURCE_WIDGET "Resource Widget"
-#define SD_I_FRAME_EDIT_WIDGET "Frame Edit Widget"
+#define SD_I_ANIMATION_EDIT_WIDGET "Frame Edit Widget"
 #define SD_I_PROPERTY_EDIT_WIDGET "Property Edit Widget"
 
 
 /* Setting */
+#define SD_I_SETTING "Setting"
 #define SD_I_PROJECT_SETTING "Project Setting"
 
 

@@ -196,19 +196,54 @@ void SdMainWindow::initMenuBar()
 		ms_setFps=new QAction(QPixmap(SD_I_SET_FPS),SD_M_SET_FPS,this);
 		mn_sprite->addAction(ms_setFps);
 		connect(ms_setFps,SIGNAL(triggered()),this,SLOT(onSetFps()));
-
-
-
-
-
 	}
 
 
+	mn_widget=m_menuBar->addMenu(SD_M_WIDGET);
+	{
+		ms_toolBar=new QAction(QPixmap(SD_I_TOOL_BAR),SD_M_TOOL_BAR,this);
+		mn_widget->addAction(ms_toolBar);
+		connect(ms_toolBar,SIGNAL(triggered()),this,SLOT(onShowToolBar()));
+        ms_toolBar->setCheckable(true);
+
+		ms_resourceWidget=new QAction(QPixmap(SD_I_RESOURCE_WIDGET),SD_M_RESOURCE_WIDGET,this);
+		mn_widget->addAction(ms_resourceWidget);
+		connect(ms_resourceWidget,SIGNAL(triggered()),this,SLOT(onShowResourceWidget()));
+        ms_resourceWidget->setCheckable(true);
 
 
+		ms_animationEditWidget=new QAction(QPixmap(SD_I_ANIMATION_EDIT_WIDGET),SD_M_ANIMATION_EDIT_WIDGET,this);
+		mn_widget->addAction(ms_animationEditWidget);
+        connect(ms_animationEditWidget,SIGNAL(triggered()),this,SLOT(onShowAnimationEditWidget()));
+        ms_animationEditWidget->setCheckable(true);
 
 
+        ms_propertyEditWidget=new QAction(QPixmap(SD_I_PROPERTY_EDIT_WIDGET),SD_M_PROPERTY_EDIT_WIDGET,this);
+        mn_widget->addAction(ms_propertyEditWidget);
+        connect(ms_propertyEditWidget,SIGNAL(triggered()),this,SLOT(onShowPropertyEditWidget()));
+        ms_propertyEditWidget->setCheckable(true);
 
+	}
+
+    mn_setting=m_menuBar->addMenu(SD_M_SETTING);
+	{
+        ms_projectSetting=new QAction(QPixmap(SD_I_PROJECT_SETTING),SD_M_PROJECT_SETTING,this);
+		mn_setting->addAction(ms_projectSetting);
+		connect(ms_projectSetting,SIGNAL(triggered()),this,SLOT(onProjectSetting()));
+	}
+
+
+	mn_about=m_menuBar->addMenu(SD_M_ABOUT);
+	{
+        ms_aboutAuthor=new QAction(QPixmap(SD_I_ABOUT_AUTHOR),SD_M_ABOUT_AUTHOR,this);
+		mn_about->addAction(ms_aboutAuthor);
+        connect(ms_aboutAuthor,SIGNAL(triggered()),this,SLOT(onAboutAuthor()));
+
+
+		ms_onlineTutorial=new QAction(QPixmap(SD_I_ONLINE_TUTORIAL),SD_M_ONLINE_TUTORIAL,this);
+		mn_about->addAction(ms_onlineTutorial);
+		connect(ms_onlineTutorial,SIGNAL(triggered()),this,SLOT(onOnlineTutorial()));
+	}
 
 
 }

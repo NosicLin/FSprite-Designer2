@@ -80,8 +80,9 @@ class SdMainWindow :public QMainWindow
 
 		/* --- widget --- */
 		void onShowWidget();
+		void onShowToolBar();
 		void onShowResourceWidget();
-		void onShowFrameEditWidget();
+		void onShowAnimationEditWidget();
 		void onShowPropertyEditWidget();
 
 		/* --- setting --- */
@@ -147,8 +148,9 @@ class SdMainWindow :public QMainWindow
 		QMenu* mn_widget;
 		QAction* ms_toolBar;
 		QAction* ms_resourceWidget;
-		QAction* ms_frameEditWidget;
+		QAction* ms_animationEditWidget;
 		QAction* ms_propertyEditWidget;
+
 
 		/* setting */
 		QMenu* mn_setting;
@@ -161,7 +163,6 @@ class SdMainWindow :public QMainWindow
 		QAction* ms_onlineTutorial;
 };
 #endif /*_SD_MAIN_WINDOW_H_*/
-
 
 
 
