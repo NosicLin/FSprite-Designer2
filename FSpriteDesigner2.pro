@@ -17,12 +17,16 @@ INCLUDEPATH +=  src \
 SOURCES += \
     src/widget/SdMainWindow.cc \
     src/main.cc \
-    src/widget/SdViewEditWidget.cc
+    src/widget/SdViewEditWidget.cc \
+    src/util/SdUtil.cc \
+    src/util/SdRenderUtil.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
     src/SdMacros.h \
-    src/widget/SdViewEditWidget.h
+    src/widget/SdViewEditWidget.h \
+    src/util/SdUtil.h \
+    src/util/SdRenderUtil.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \
