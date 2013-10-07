@@ -18,6 +18,8 @@ class SdTextureMgr
 
 	public:
 		std::map<std::string,SdTexture*> m_textures;
+
+		std::string m_loadPath;
 };
 
 #endif /*_SD_TEXTURE_MGR_H_*/

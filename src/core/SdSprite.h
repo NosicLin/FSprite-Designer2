@@ -3,31 +3,45 @@
 
 #include <vector>
 #include <string>
+#include "core/SdIdentify.h"
 
 class SdAnimation;
+class SdProject;
 
-class SdSprite
+class SdSprite:public SdIdentify
 {
 	public: 
 		static SdSprite* create();
 
 	public:
 		SdSprite();
-		~SdSprite();
+		virtual ~SdSprite();
+	public:
+		virtual int getClassType();
+		virtual const char* className();
 
 	public:
 		void setName(const char* name);
 		std::string getName();
 
+		SdProject* getProject();
+		void setProject(SdProject* proj);
+
 		SdAnimation* getAnimation(const char* name);
 		SdAnimation* getAnimation(int index);
-		int getSpriteNu();
+		int getAnimationNu();
+		int animationPos(SdAnimation* anim);
+
+		/* animation will not delete */
 		void removeAnimation(SdAnimation* anim);
+
+		/* animation will delete */
 		void removeAnimation(int index);
 
 	private:
 		std::vector<SdAnimation*> m_animations;
 		std::string m_name;
+		SdProject* m_project;
 };
 
 #endif /*_SD_SPRITE_H_*/

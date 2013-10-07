@@ -19,14 +19,29 @@ SOURCES += \
     src/main.cc \
     src/widget/SdViewEditWidget.cc \
     src/util/SdUtil.cc \
-    src/util/SdRenderUtil.cc
+    src/util/SdRenderUtil.cc \
+    src/core/SdSprite.cc \
+    src/core/SdProject.cc \
+    src/core/SdProject.cc \
+    src/core/SdIdentify.cc \
+    src/core/SdAnimation.cc \
+    src/core/SdTextureMgr.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
     src/SdMacros.h \
     src/widget/SdViewEditWidget.h \
     src/util/SdUtil.h \
-    src/util/SdRenderUtil.h
+    src/util/SdRenderUtil.h \
+    src/core/SdTextureMgr.h \
+    src/core/SdTexture.h \
+    src/core/SdSprite.h \
+    src/core/SdProjectConfig.h \
+    src/core/SdProject.h \
+    src/core/SdKeyFrame.h \
+    src/core/SdIdentify.h \
+    src/core/SdBone.h \
+    src/core/SdAnimation.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \

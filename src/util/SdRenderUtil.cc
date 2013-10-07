@@ -47,7 +47,7 @@ namespace SdRenderUtil
 		glEnd();
 	}
 
-	void drawLine(Vector2 start,Vector2 end,float width,Color c)
+    void drawLine(Vector2 start,Vector2 end,float /*width*/,Color c)
 	{
 		Render* render=Global::render();
 

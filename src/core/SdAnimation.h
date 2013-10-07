@@ -1,12 +1,21 @@
 #ifndef _SD_ANIMATION_H_
 #define _SD_ANIMATION_H_ 
 
-class SdAnimation 
+#include <string>
+#include <vector>
+
+#include "core/SdIdentify.h"
+
+class SdBone;
+class SdAnimation :public SdIdentify
 {
 	public:
 		SdAnimation();
-		~SdAnimation();
+        virtual ~SdAnimation();
 
+	public:
+        virtual int getClassType();
+        virtual const char* className();
 
 	public:
 		void setName(const char* name);
@@ -26,6 +35,7 @@ class SdAnimation
 	private:
 		std::vector<SdBone*> m_bones;
 		SdBone* m_root;
+		std::string m_name;
 };
 
 
