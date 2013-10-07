@@ -125,11 +125,29 @@ QVariant SdProjectExploreModel::data(const QModelIndex& index,int role)const
 		return QVariant();
 	}
 
+	SdIdentify* idfier=(SdIdentify*)index.internalPointer();
 	switch(role)
 	{
 		case Qt::DisplayRole:
 			{
-				return QString("fsafasf");
+
+				switch(idfier->getClassType())
+				{
+					case SD_CLASS_PROJECT:
+						{
+							return QString(((SdProject*)idfier)->getName().c_str());
+						}
+					case SD_CLASS_SPRITE:
+						{
+							return QString(((SdSprite*)idfier)->getName().c_str());
+						}
+					case SD_CLASS_ANIMATION:
+						{
+							return QString(((SdAnimation*)idfier)->getName().c_str());
+						}
+					default:
+						assert(0);
+				}
 			}
 	}
 	return QVariant();

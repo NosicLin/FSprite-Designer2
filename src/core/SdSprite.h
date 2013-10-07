@@ -27,6 +27,9 @@ class SdSprite:public SdIdentify
 		SdProject* getProject();
 		void setProject(SdProject* proj);
 
+
+        void addAnimation(SdAnimation* anim);
+
 		SdAnimation* getAnimation(const char* name);
 		SdAnimation* getAnimation(int index);
 		int getAnimationNu();

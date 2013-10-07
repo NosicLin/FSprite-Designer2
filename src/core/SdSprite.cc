@@ -54,6 +54,12 @@ void SdSprite::setProject(SdProject* proj)
 	m_project=proj;
 }
 
+void SdSprite::addAnimation(SdAnimation* anim)
+{
+	m_animations.push_back(anim);
+	anim->setSprite(this);
+}
+
 
 SdAnimation* SdSprite::getAnimation(const char* name)
 {
@@ -69,6 +75,7 @@ SdAnimation* SdSprite::getAnimation(const char* name)
 	}
 	return NULL;
 }
+
 
 SdAnimation* SdSprite::getAnimation(int index)
 {

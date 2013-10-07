@@ -30,7 +30,11 @@ SOURCES += \
     src/operator/SdOperator.cc \
     src/operator/SdDataOperator.cc \
     src/SdGlobal.cc \
-    src/SdMsgCenter.cc
+    src/SdMsgCenter.cc \
+    src/widget/SdProjectExploreWidget.cc \
+    src/operator/SdOperator.cc \
+    src/operator/SdUiOperator.cc \
+    src/widget/SdInputDialog.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
@@ -51,7 +55,10 @@ HEADERS  += \
     src/widget/SdProjectExploreModel.h \
     src/operator/SdOperator.h \
     src/operator/SdDataOperator.h \
-    src/SdMsgCenter.h
+    src/SdMsgCenter.h \
+    src/test.h \
+    src/operator/SdUiOperator.h \
+    src/widget/SdInputDialog.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \
@@ -70,5 +77,8 @@ win32 {
 
 		CONFIG +=console
 }
+
+FORMS += \
+    resource/ui/input_text.ui
 
 

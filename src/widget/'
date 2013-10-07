@@ -1,0 +1,102 @@
+#include <QVBoxLayout>
+#include "widget/SdProjectExploreWidget.h"
+#include "widget/SdProjectExploreModel.h"
+
+SdProjectExploreWidget::SdProjectExploreWidget()
+{
+	m_projectExploreView=NULL;
+	m_projectExploreModel=NULL;
+
+	initWidget();
+	initMenu();
+}
+
+
+
+SdProjectExploreWidget::~SdProjectExploreWidget()
+{
+	destory();
+}
+
+
+
+void SdProjectExploreWidget::initWidget()
+{
+	m_projectExploreView=new QTreeView(this);
+	m_projectExploreView->setHeaderHidden(true);
+    m_projectExploreView->setIndentation(12);
+	m_projectExploreModel=new SdProjectExploreModel;
+	m_projectExploreView->setModel(m_projectExploreModel);
+
+	QVBoxLayout* vlayout=new QVBoxLayout();
+	vlayout->addWidget(m_projectExploreView);
+	setLayout(vlayout);
+}
+
+
+void SdProjectExploreWidget::initMenu()
+{
+	/* ---  project  ---- */
+	m_menuProject=new QMenu(this);
+	ma_newSprite=m_menuProject->addAction("Add Sprite");
+	ma_renameProject=m_menuProject->addAction("Rename Project");
+	ma_save=m_menuProject->("Save");
+	ma_exportAllFst=m_menuProject->addAction("Export All *.fst");
+	ma_exportAllFsk=m_menuProject->addAction("Export All *.fsk");
+
+	/* --- sprite --- */
+
+
+
+
+
+}
+
+
+void SdProjectExploreWidget::mousePress(const QModelIndex& index)
+{
+	if(!index.isValid())
+	{
+		return ;
+	}
+
+	SdIdentify* idfier=inde.internalPointer();
+	switch(idfier->getClassType())
+	{
+
+
+	}
+	
+
+
+
+	
+
+}
+
+void SdProjectExploreWidget::destory()
+{
+	delete m_projectExploreView;
+	m_projectExploreView=NULL;
+
+	delete m_projectExploreModel;
+	m_projectExploreModel=NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 #include "widget/SdMainWindow.h"
 #include "widget/SdViewEditWidget.h"
+#include "widget/SdProjectExploreWidget.h"
 #include <QMenuBar>
 #include "SdMacros.h"
 
@@ -25,7 +26,17 @@ void SdMainWindow::initWidget()
 {
     m_viewEditWidget=SdViewEditWidget::create();
     setCentralWidget(m_viewEditWidget);
+
+	/* project explore widget */
+	m_projectExploreWidget=new SdProjectExploreWidget();
+	m_projectExploreDockWidget=new QDockWidget("ProjectExplore");
+	m_projectExploreDockWidget->setWidget(m_projectExploreWidget);
+	m_projectExploreDockWidget->setAllowedAreas(Qt::RightDockWidgetArea|Qt::LeftDockWidgetArea);
+
+	addDockWidget(Qt::RightDockWidgetArea,m_projectExploreDockWidget);
+
 }
+
 
 
 

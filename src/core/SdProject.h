@@ -23,7 +23,12 @@ class SdProject:public SdIdentify
 
 
 	public:
+        std::string getName();
+
 		/* sprite */
+
+        void addSprite(SdSprite* sprite);
+
 		SdSprite* getSprite(const char* name);
 		SdSprite* getSprite(int index);
 		int getSpriteNu();

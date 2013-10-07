@@ -6,11 +6,8 @@
 #include <QDockWidget>
 #include <QToolBar>
 
-class SdResourceWidget;
-class SdFrameEditWidget;
-class SdPropertyEditWidget;
 class SdViewEditWidget;
-class SdProjectWidget;
+class SdProjectExploreWidget;
 
 class SdMainWindow :public QMainWindow
 {
@@ -99,6 +96,8 @@ class SdMainWindow :public QMainWindow
     private:
         SdViewEditWidget* m_viewEditWidget;
 
+		QDockWidget* m_projectExploreDockWidget;
+		SdProjectExploreWidget* m_projectExploreWidget;
 
         /* menu filed */
 	private:

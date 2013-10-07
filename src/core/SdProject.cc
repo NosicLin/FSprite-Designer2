@@ -38,6 +38,18 @@ const char* SdProject::className()
 	return "SdProject";
 }
 
+std::string SdProject::getName()
+{
+	return m_projectName;
+}
+
+
+
+void SdProject::addSprite(SdSprite* sprite)
+{
+	m_sprites.push_back(sprite);
+	sprite->setProject(this);
+}
 
 SdSprite* SdProject::getSprite(const char* name)
 {
