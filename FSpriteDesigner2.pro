@@ -25,7 +25,12 @@ SOURCES += \
     src/core/SdProject.cc \
     src/core/SdIdentify.cc \
     src/core/SdAnimation.cc \
-    src/core/SdTextureMgr.cc
+    src/core/SdTextureMgr.cc \
+    src/widget/SdProjectExploreModel.cc \
+    src/operator/SdOperator.cc \
+    src/operator/SdDataOperator.cc \
+    src/SdGlobal.cc \
+    src/SdMsgCenter.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
@@ -41,7 +46,12 @@ HEADERS  += \
     src/core/SdKeyFrame.h \
     src/core/SdIdentify.h \
     src/core/SdBone.h \
-    src/core/SdAnimation.h
+    src/core/SdAnimation.h \
+    src/widget/SdProjectExploreWidget.h \
+    src/widget/SdProjectExploreModel.h \
+    src/operator/SdOperator.h \
+    src/operator/SdDataOperator.h \
+    src/SdMsgCenter.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \

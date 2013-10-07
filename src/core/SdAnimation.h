@@ -7,6 +7,7 @@
 #include "core/SdIdentify.h"
 
 class SdBone;
+class SdSprite;
 class SdAnimation :public SdIdentify
 {
 	public:
@@ -20,6 +21,9 @@ class SdAnimation :public SdIdentify
 	public:
 		void setName(const char* name);
 		std::string getName();
+
+		SdSprite* getSprite();
+		void setSprite(SdSprite* sprite);
 
 	public:
 		void addBone(SdBone* bone);
@@ -36,6 +40,8 @@ class SdAnimation :public SdIdentify
 		std::vector<SdBone*> m_bones;
 		SdBone* m_root;
 		std::string m_name;
+
+		SdSprite* m_sprite;
 };
 
 

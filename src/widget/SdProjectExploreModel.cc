@@ -1,5 +1,11 @@
-#include "widget/SdProjectExploreModel.h"
+#include <assert.h>
 
+#include "widget/SdProjectExploreModel.h"
+#include "core/SdProject.h"
+#include "core/SdSprite.h"
+#include "core/SdAnimation.h"
+#include "operator/SdOperator.h"
+#include "operator/SdDataOperator.h"
 
 SdProjectExploreModel::SdProjectExploreModel()
 {
@@ -13,7 +19,7 @@ SdProjectExploreModel::~SdProjectExploreModel()
 QModelIndex SdProjectExploreModel::index(int row,
 		int column,const QModelIndex& parent) const 
 {
-	SdProject* proj=SdOperator::data()->getCurProject();
+    SdProject* proj=SdOperator::data()->getCurProject();
 	if(!proj)
 	{
 		return QModelIndex(); 
@@ -25,7 +31,7 @@ QModelIndex SdProjectExploreModel::index(int row,
 	}
 
 	SdIdentify* idfier=(SdIdentify*) parent.internalPointer();
-	switch(idfier->getClassType)
+    switch(idfier->getClassType())
 	{
 		case SD_CLASS_PROJECT:
 			{
@@ -106,7 +112,7 @@ int SdProjectExploreModel::rowCount(const QModelIndex& parent)const
 	}
 	return 0;
 }
-int SdProjectExploreModel::columnCount(const QModelIndex& parent)const 
+int SdProjectExploreModel::columnCount(const QModelIndex& /*parent*/)const
 {
 	return 1;
 }

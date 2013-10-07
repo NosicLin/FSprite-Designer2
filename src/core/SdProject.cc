@@ -58,6 +58,12 @@ SdSprite* SdProject::getSprite(int index)
 	return m_sprites[index];
 }
 
+int SdProject::getSpriteNu()
+{
+	return m_sprites.size();
+}
+
+
 void SdProject::removeSprite(SdSprite* sprite)
 {
 	std::vector<SdSprite*>::iterator iter;

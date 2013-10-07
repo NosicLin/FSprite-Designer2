@@ -1,5 +1,11 @@
+#include <assert.h>
 #include "SdGlobal.h"
 #include "SdMsgCenter.h"
+
+
+#include "core/SdProject.h"
+#include "core/SdSprite.h"
+#include "core/SdAnimation.h"
 
 
 SdMsgCenter* SdGlobal::m_msgCenter=NULL;
@@ -39,14 +45,14 @@ void SdGlobal::setCurSprite(SdSprite* sprite)
 {
 	SdProject* proj=SdGlobal::getCurProject();
 	assert(proj);
-	proj->setCurProject(proj);
+    proj->setCurSprite(sprite);
 }
 
 
 
 void SdGlobal::moduleInit()
 {
-	m_msgCenter=new SdMsgCenter();
+    m_msgCenter=new SdMsgCenter();
 	m_curProject=NULL;
 }
 

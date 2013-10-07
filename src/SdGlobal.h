@@ -3,6 +3,10 @@
 
 class SdMsgCenter;
 
+class SdProject;
+class SdSprite;
+class SdAnimation;
+
 class SdGlobal 
 {
 	public:

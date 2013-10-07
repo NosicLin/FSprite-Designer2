@@ -31,6 +31,16 @@ std::string SdAnimation::getName()
 	return m_name;
 }
 
+SdSprite* SdAnimation::getSprite()
+{
+	return m_sprite;
+}
+
+void SdAnimation::setSprite(SdSprite* sprite)
+{
+	m_sprite=sprite;
+}
+
 
 
 void SdAnimation::addBone(SdBone* /*bone*/)
