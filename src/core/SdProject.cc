@@ -1,7 +1,9 @@
+#include <QtGlobal>
 #include <assert.h>
 #include "core/SdProject.h"
 #include "core/SdTextureMgr.h"
 #include "core/SdSprite.h"
+#include "command/SdCommand.h"
 
 
 
@@ -17,6 +19,7 @@ SdProject::SdProject(const std::string& dir,const std::string& name)
 	m_textureMgr->setTextureLoadPath(dir.c_str());
 	m_projectName=name;
 	m_projectDir=dir;
+	m_curStateIndex=-1;
 }
 
 
@@ -51,6 +54,16 @@ void SdProject::addSprite(SdSprite* sprite)
 	sprite->setProject(this);
 }
 
+void SdProject::addSprite(int pos,SdSprite* sprite)
+{
+	qDebug("addSprite,pos=%d",pos);
+	m_sprites.insert(m_sprites.begin()+pos,sprite);
+	sprite->setProject(this);
+}
+
+
+
+
 SdSprite* SdProject::getSprite(const char* name)
 {
 	std::string s_name(name);
@@ -64,6 +77,26 @@ SdSprite* SdProject::getSprite(const char* name)
 	}
 	return NULL;
 }
+
+bool SdProject::hasSpriteWithName(const char* name)
+{
+	return getSprite(name)!=NULL;
+}
+
+bool SdProject::hasSprite(SdSprite* sprite)
+{
+	int size=m_sprites.size();
+	for(int i=0;i<size;i++)
+	{
+		if(m_sprites[i]==sprite)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
 
 SdSprite* SdProject::getSprite(int index)
 {
@@ -121,36 +154,66 @@ SdSprite* SdProject::getCurSprite()
 }
 
 
+
 void SdProject::setCurSprite(SdSprite* sprite)
 {
 	m_curSprite=sprite;
 }
 
 
+void SdProject::pushCommand(SdCommand* cmd)
+{
+	if(m_curStateIndex<m_historyStates.size()-1)
+	{
+		m_historyStates.dropTail(m_historyStates.size()-1-m_curStateIndex);
+	}
 
+	if(m_historyStates.full())
+	{
+		m_historyStates.push(cmd);
+	}
+	else 
+	{
+		m_historyStates.push(cmd);
+		m_curStateIndex++;
+	}
+}
 
+SdCommand* SdProject::undo()
+{
+	assert(canUndo());
+	SdCommand* command=m_historyStates.getItem(m_curStateIndex);
+	m_curStateIndex--;
+	command->undo();
+	return command;
 
+}
 
+SdCommand* SdProject::redo()
+{
+	assert(canRedo());
+	SdCommand* command=m_historyStates.getItem(m_curStateIndex+1);
+	m_curStateIndex++;
+	command->redo();
+	return command;
+}
 
+bool SdProject::canRedo()
+{
+	if(m_curStateIndex<m_historyStates.size()-1)
+	{
+		return true;
+	}
+	return false;
+}
 
+bool SdProject::canUndo()
+{
+	if(m_curStateIndex>=0)
+	{
+		return true;
+	}
+    return false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 

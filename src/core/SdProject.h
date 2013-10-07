@@ -5,10 +5,12 @@
 #include <vector>
 #include <string>
 #include "core/SdIdentify.h"
+#include "util/SdCircleQueue.h"
 
 class SdSprite;
 class SdTextureMgr;
 class SdTexture; 
+class SdCommand;
 
 class SdProject:public SdIdentify
 {
@@ -25,13 +27,16 @@ class SdProject:public SdIdentify
 	public:
         std::string getName();
 
-		/* sprite */
 
+		/* sprite */
         void addSprite(SdSprite* sprite);
+		void addSprite(int pos,SdSprite* sprite);
 
 		SdSprite* getSprite(const char* name);
 		SdSprite* getSprite(int index);
 		int getSpriteNu();
+		bool hasSpriteWithName(const char* name);
+		bool hasSprite(SdSprite* sprite);
 
 		void removeSprite(SdSprite* sprite); /* sprite not delete */
 		void removeSprite(int index); /* sprite will delete */
@@ -41,6 +46,19 @@ class SdProject:public SdIdentify
 		SdSprite* getCurSprite();
 		void setCurSprite(SdSprite* sprite);
 
+
+
+		/* undo/redo support */
+	public:
+		bool canRedo();
+		bool canUndo();
+
+		SdCommand* redo();
+		SdCommand* undo();
+
+		void pushCommand(SdCommand* cmd);
+
+
 	private:
 		std::vector<SdSprite*> m_sprites;
 		SdSprite* m_curSprite;
@@ -48,6 +66,11 @@ class SdProject:public SdIdentify
 		SdTextureMgr* m_textureMgr;
 		std::string m_projectName;
 		std::string m_projectDir;
+
+
+		/* undo/redo  */
+        SdCircleQueue<SdCommand> m_historyStates;
+        int m_curStateIndex;
 };
 
 

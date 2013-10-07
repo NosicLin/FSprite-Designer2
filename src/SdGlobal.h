@@ -25,6 +25,11 @@ class SdGlobal
 		static void setCurAnimation(SdAnimation* anim);
 
 
+		/* undo/redo */
+
+		static bool canUndo();
+		static bool canRedo(); 
+
 	private:
 		static SdMsgCenter* m_msgCenter;
 		static SdProject* m_curProject;

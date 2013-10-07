@@ -5,6 +5,8 @@
 #include <QTreeView>
 
 class SdProjectExploreModel;
+class SdSprite;
+class SdProject;
 
 class SdProjectExploreWidget:public QWidget
 {
@@ -16,6 +18,10 @@ class SdProjectExploreWidget:public QWidget
 
 	public slots:
 		void mousePress(const QModelIndex& index);
+		void slotSpriteAttributeChange(SdSprite* sprite);
+		void slotSpriteAdd(SdProject* proj,SdSprite* sprite);
+		void slotSpriteRemove(SdProject* proj,SdSprite* sprite);
+
 
 	protected:
 		void initWidget();

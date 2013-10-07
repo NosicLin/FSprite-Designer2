@@ -18,6 +18,10 @@ class SdUiOperator:public QObject
 		void renameAnimation(SdAnimation* anim);
 		void renameSprite(SdSprite* sprite);
 		void renameSprite();
+
+		void addSprite();
+		void deleteSprite();
+        void deleteSprite(SdProject* proj,SdSprite* sprite);
 };
 
 #endif /*_SD_UI_OPERATOR_H_*/

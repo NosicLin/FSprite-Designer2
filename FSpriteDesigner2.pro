@@ -34,7 +34,11 @@ SOURCES += \
     src/widget/SdProjectExploreWidget.cc \
     src/operator/SdOperator.cc \
     src/operator/SdUiOperator.cc \
-    src/widget/SdInputDialog.cc
+    src/widget/SdInputDialog.cc \
+    src/command/SdSpriteAttrChangeCommand.cc \
+    src/command/SdCommand.cc \
+    src/command/SdSpriteAddCommand.cc \
+    src/command/SdSpriteRemoveCommand.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
@@ -58,7 +62,12 @@ HEADERS  += \
     src/SdMsgCenter.h \
     src/test.h \
     src/operator/SdUiOperator.h \
-    src/widget/SdInputDialog.h
+    src/widget/SdInputDialog.h \
+    src/command/SdSpriteAttrChangeCommand.h \
+    src/command/SdCommand.h \
+    src/util/SdCircleQueue.h \
+    src/command/SdSpriteAddCommand.h \
+    src/command/SdSpriteRemoveCommand.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \

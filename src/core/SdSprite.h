@@ -8,6 +8,12 @@
 class SdAnimation;
 class SdProject;
 
+class SdSpriteAttribute 
+{
+	public:
+		std::string name;
+};
+
 class SdSprite:public SdIdentify
 {
 	public: 
@@ -21,6 +27,9 @@ class SdSprite:public SdIdentify
 		virtual const char* className();
 
 	public:
+		void setAttribute(const SdSpriteAttribute& attr);
+		SdSpriteAttribute getAttribute();
+	public:
 		void setName(const char* name);
 		std::string getName();
 
@@ -28,7 +37,7 @@ class SdSprite:public SdIdentify
 		void setProject(SdProject* proj);
 
 
-        void addAnimation(SdAnimation* anim);
+		void addAnimation(SdAnimation* anim);
 
 		SdAnimation* getAnimation(const char* name);
 		SdAnimation* getAnimation(int index);
@@ -47,14 +56,24 @@ class SdSprite:public SdIdentify
 
 	private:
 		std::vector<SdAnimation*> m_animations;
-		std::string m_name;
+		SdAnimation* m_curAnimation;
 		SdProject* m_project;
 
-		SdAnimation* m_curAnimation;
+		/* attribute */
+		SdSpriteAttribute m_attr;
 };
 
 
 #endif /*_SD_SPRITE_H_*/
+
+
+
+
+
+
+
+
+
 
 
 

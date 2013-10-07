@@ -23,73 +23,73 @@ class SdMainWindow :public QMainWindow
         void initWidget();
         void initMenuBar();
 
-    public :
+    public slots:
 		/* ----- file ---- */
-		void onOpenProject();
-		void onCreatePoject();
-		void onSaveProject();
-		void onSaveProjectAs();
-		void onCloseProject();
+        void onOpenProject(){};
+        void onCreatePoject(){};
+        void onSaveProject(){};
+        void onSaveProjectAs(){};
+        void onCloseProject(){};
 
-		void onExportFst();
-		void onExportFsk();
-		void onExportAll();
-		void onQuit();
+        void onExportFst(){};
+        void onExportFsk(){};
+        void onExportAll(){};
+        void onQuit(){};
 
 		/* ---- Edit ----- */
 		void onUndo();
 		void onRedo();
-		void onCopy();
-		void onPaste();
-		void onCut();
-		void onDelete();
+        void onCopy(){};
+        void onPaste(){};
+        void onCut(){};
+        void onDelete(){};
 
 
 		/* ---- view ---- */
-		void onZoomIn();
-		void onZoomOut();
-		void onResetView();
+        void onZoomIn(){};
+        void onZoomOut(){};
+        void onResetView(){};
 
-		void onSetBackgroundColor();
-		void onShowGrid();
-		void onShowCoordnate();
-		void onShowBone();
-		void onShowBoneText();
-		void onShowImage();
+        void onSetBackgroundColor(){};
+        void onShowGrid(){};
+        void onShowCoordnate(){};
+        void onShowBone(){};
+        void onShowBoneText(){};
+        void onShowImage(){};
 
 
 		/* ---- sprite ---- */
-		void onNewSprite();
-		void onRenameSprite();
-		void onDeleteSprite();
+        void onNewSprite(){};
+        void onRenameSprite(){};
+        void onDeleteSprite(){};
 
-		void onNewAnimation();
-		void onRenameAnimation();
-		void onDeleteAnimation();
+        void onNewAnimation(){};
+        void onRenameAnimation(){};
+        void onDeleteAnimation(){};
 
-		void onInsertKeyFrame();
-		void onDeleteKeyFrame();
-		void onSetFps();
+        void onInsertKeyFrame(){};
+        void onDeleteKeyFrame(){};
+        void onSetFps(){};
 
-		void onNewBone();
-		void onRenameBone();
-		void onDeleteBone();
+        void onNewBone(){};
+        void onRenameBone(){};
+        void onDeleteBone(){};
 
 
 		/* --- widget --- */
-		void onShowWidget();
-		void onShowToolBar();
-		void onShowResourceWidget();
-		void onShowAnimationEditWidget();
-		void onShowPropertyEditWidget();
+        void onShowWidget(){};
+        void onShowToolBar(){};
+        void onShowResourceWidget(){};
+        void onShowAnimationEditWidget(){};
+        void onShowPropertyEditWidget(){};
 
 		/* --- setting --- */
-        void onProjectSetting();
+        void onProjectSetting(){};
 
 
 		/* ---- about ----*/
-        void onAboutAuthor();
-        void onOnlineTutorial();
+        void onAboutAuthor(){};
+        void onOnlineTutorial(){};
 
 
 

@@ -1,8 +1,12 @@
+#include <QMenuBar>
+#include <QtGlobal>
+
 #include "widget/SdMainWindow.h"
 #include "widget/SdViewEditWidget.h"
 #include "widget/SdProjectExploreWidget.h"
-#include <QMenuBar>
 #include "SdMacros.h"
+#include "operator/SdOperator.h"
+#include "operator/SdDataOperator.h"
 
 
 SdMainWindow*  SdMainWindow::create()
@@ -272,7 +276,28 @@ void SdMainWindow::initMenuBar()
 
 
 
+/* slot */
 
+
+
+void SdMainWindow::onUndo()
+{
+	if(SdOperator::data()->canUndo())
+    {
+        qDebug("undo");
+		SdOperator::data()->undo();
+	}
+
+}
+
+void SdMainWindow::onRedo()
+{
+	if(SdOperator::data()->canRedo())
+    {
+        qDebug("redo");
+		SdOperator::data()->redo();
+	}
+}
 
 
 

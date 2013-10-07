@@ -11,6 +11,8 @@
 #include "operator/SdOperator.h"
 #include "operator/SdUiOperator.h"
 #include "operator/SdDataOperator.h"
+#include "SdGlobal.h"
+#include "SdMsgCenter.h"
 
 SdProjectExploreWidget::SdProjectExploreWidget()
 {
@@ -78,6 +80,14 @@ void SdProjectExploreWidget::connectSignal()
 {
 	connect(m_projectExploreView,SIGNAL(pressed(const QModelIndex&)),this,SLOT(mousePress(const QModelIndex&)));
 	connect(ma_renameSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameSprite()));
+	connect(ma_newSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(addSprite()));
+	connect(ma_deleteSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(deleteSprite()));
+
+    connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteAttributeChange(SdSprite*)),this,SLOT(slotSpriteAttributeChange(SdSprite* )));
+
+	connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteAdd(SdProject*,SdSprite*)),this,SLOT(slotSpriteAdd(SdProject*,SdSprite*)));
+	connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteRemove(SdProject*,SdSprite*)),this,SLOT(slotSpriteRemove(SdProject*,SdSprite*)));
+
 
 }
 
@@ -106,10 +116,12 @@ void SdProjectExploreWidget::mousePress(const QModelIndex& index)
 				SdAnimation* anim=(SdAnimation*)idfier;
 				SdOperator::data()->setCurAnimation(anim);
 				break;
-			}
+            }
+        case SD_CLASS_PROJECT:
+            break;
 
-		default:
-			assert(0);
+        default:
+            assert(0);
 	}
 
 
@@ -147,6 +159,33 @@ void SdProjectExploreWidget::destory()
 	delete m_projectExploreModel;
 	m_projectExploreModel=NULL;
 }
+
+
+
+void SdProjectExploreWidget::slotSpriteAttributeChange(SdSprite* /* sprite */)
+{
+	m_projectExploreModel->refresh();
+}
+
+void SdProjectExploreWidget::slotSpriteAdd(SdProject* /*proj*/,SdSprite* /*sprite*/)
+{
+	m_projectExploreModel->refresh();
+}
+
+void SdProjectExploreWidget::slotSpriteRemove(SdProject* /*proj*/,SdSprite* /*sprite*/)
+{
+	m_projectExploreModel->refresh();
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

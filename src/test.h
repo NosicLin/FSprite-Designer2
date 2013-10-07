@@ -8,7 +8,7 @@ static inline SdProject* createProject()
 	SdProject* proj=new SdProject("proj/fsdf/","proj-01");
 
 
-    for(int i=0;i<100;i++)
+    for(int i=0;i<10;i++)
 	{
 		char buf[100];
 		sprintf(buf,"sprite-0%d",i);

@@ -2,6 +2,8 @@
 #define _SD_MSG_CENTER_H_
 
 #include <QObject>
+class SdSprite;
+class SdProject;
 
 class SdMsgCenter:public QObject 
 {
@@ -12,11 +14,15 @@ class SdMsgCenter:public QObject
 		SdMsgCenter();
 		~SdMsgCenter();
 
-	public slots:
+
+    signals:
+		void signalSpriteAttributeChange(SdSprite* sprite);
+		void signalSpriteAdd(SdProject* proj,SdSprite* sprite);
+		void signalSpriteRemove(SdProject* proj,SdSprite* sprite);
+		void signalCurSpriteChange();
 
 	public:
 		void emitCurProjectChange();
-		void emitCurSpriteChange();
 		void emitCurAnimationChange();
 		void emitCurEditModeChange();
 		void emitCurBoneChange();
@@ -24,6 +30,15 @@ class SdMsgCenter:public QObject
 		void emitCurImageChange();
 		void emitCurImageAttrChange();
 		void emitCurFrameChange();
+
+
+		/* sprite */
+		void emitCurSpriteChange();
+		void emitSpriteAttributeChange(SdSprite* sprite);
+		void emitSpriteAdd(SdProject* proj,SdSprite* sprite);
+		void emitSpriteRemove(SdProject* proj,SdSprite* sprite);
+
+
 };
 
 

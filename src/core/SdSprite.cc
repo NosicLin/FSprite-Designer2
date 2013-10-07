@@ -32,16 +32,17 @@ const char* SdSprite::className()
 }
 
 
-
 void SdSprite::setName(const char* name)
 {
-	m_name=std::string(name);
+	m_attr.name=std::string(name);
 }
+
 
 std::string SdSprite::getName()
 {
-	return m_name;
+    return m_attr.name;
 }
+
 
 
 SdProject* SdSprite::getProject()
@@ -138,6 +139,17 @@ void SdSprite::setCurAnimation(SdAnimation* anim)
 	m_curAnimation=anim;
 }
 
+
+
+void SdSprite::setAttribute(const SdSpriteAttribute& attr)
+{
+	m_attr=attr;
+}
+
+SdSpriteAttribute SdSprite::getAttribute()
+{
+	return m_attr;
+}
 
 
 

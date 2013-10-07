@@ -35,6 +35,13 @@ QModelIndex SdProjectExploreModel::index(int row,
 	{
 		case SD_CLASS_PROJECT:
 			{
+				int sprite_nu=((SdProject*)idfier)->getSpriteNu();
+				if(row>=sprite_nu)
+				{
+					qDebug("sprite nu is %d,row=%d",sprite_nu,row);
+					return QModelIndex();
+				}
+
 				SdSprite* sprite=((SdProject*)idfier)->getSprite(row);
 				return createIndex(row,column,sprite);
 			}
@@ -154,6 +161,10 @@ QVariant SdProjectExploreModel::data(const QModelIndex& index,int role)const
 
 
 
+void SdProjectExploreModel::refresh()
+{
+	emit layoutChanged();
+}
 
 
 

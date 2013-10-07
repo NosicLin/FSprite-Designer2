@@ -63,6 +63,27 @@ void SdGlobal::setCurAnimation(SdAnimation* anim)
 }
 
 
+bool SdGlobal::canUndo()
+{
+	SdProject* proj=SdGlobal::getCurProject();
+	if(proj)
+	{
+		return proj->canUndo();
+	}
+	return false;
+
+}
+
+bool SdGlobal::canRedo()
+{
+	SdProject* proj=SdGlobal::getCurProject();
+	if(proj)
+	{
+		return proj->canRedo();
+	}
+	return false;
+}
+
 
 
 
