@@ -2,6 +2,8 @@
 #define _SD_DATA_OPERATOR_H_ 
 
 class SdProject;
+class SdSprite;
+class SdAnimation;
 class SdDataOperator 
 {
 	public:
@@ -10,7 +12,15 @@ class SdDataOperator
 
 	public:
 		SdProject* getCurProject();
+		void setCurProject(SdProject* proj);
+
+		void setCurSprite(SdSprite* sprite);
+		SdSprite* getCurSprite();
+
+		void setCurAnimation(SdAnimation* anim);
+		SdAnimation* getCurAnimation();
 };
+
 
 
 

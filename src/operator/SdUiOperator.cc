@@ -2,6 +2,8 @@
 #include <QMessageBox>
 #include "widget/SdInputDialog.h"
 #include "operator/SdUiOperator.h"
+#include "operator/SdOperator.h"
+#include "operator/SdDataOperator.h"
 #include "core/SdProject.h"
 #include "core/SdSprite.h"
 #include "core/SdSprite.h"
@@ -28,7 +30,8 @@ void SdUiOperator::renameAnimation(SdAnimation* /*anim*/)
 
 void SdUiOperator::renameSprite()
 {
-    SdSprite* sprite=SdGlobal::getCurSprite();
+    SdSprite* sprite=SdOperator::data()->getCurSprite();
+
 	assert(sprite);
 	renameSprite(sprite);
 }
@@ -41,7 +44,9 @@ void SdUiOperator::renameSprite(SdSprite* sprite)
 		std::string name=dialog.getTextField();
 		if(name=="")
 		{
-			QMessageBox(QMessageBox::Warning, "Rename Project","Name Can't Empty String");
+			QMessageBox msg(QMessageBox::Warning, "Rename Project","Name Can't Empty String");
+			msg.exec();
+
 		}
 		else 
 		{

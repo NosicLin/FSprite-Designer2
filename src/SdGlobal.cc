@@ -48,6 +48,23 @@ void SdGlobal::setCurSprite(SdSprite* sprite)
     proj->setCurSprite(sprite);
 }
 
+SdAnimation* SdGlobal::getCurAnimation()
+{
+	SdSprite* sprite=SdGlobal::getCurSprite();
+	assert(sprite);
+	return sprite->getCurAnimation();
+}
+
+void SdGlobal::setCurAnimation(SdAnimation* anim)
+{
+	SdSprite* sprite=SdGlobal::getCurSprite();
+	assert(sprite);
+	sprite->setCurAnimation(anim);
+}
+
+
+
+
 
 
 void SdGlobal::moduleInit()

@@ -41,11 +41,18 @@ class SdSprite:public SdIdentify
 		/* animation will delete */
 		void removeAnimation(int index);
 
+		/* cur animation */
+		SdAnimation* getCurAnimation();
+		void setCurAnimation(SdAnimation* anim);
+
 	private:
 		std::vector<SdAnimation*> m_animations;
 		std::string m_name;
 		SdProject* m_project;
+
+		SdAnimation* m_curAnimation;
 };
+
 
 #endif /*_SD_SPRITE_H_*/
 

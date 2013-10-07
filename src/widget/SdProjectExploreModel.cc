@@ -64,7 +64,6 @@ QModelIndex SdProjectExploreModel::parent(const QModelIndex& child) const
 			{
 				return QModelIndex();
 			}
-
 		case SD_CLASS_SPRITE:
 			{
 				SdProject* proj=((SdSprite*)idfier)->getProject();
@@ -75,9 +74,7 @@ QModelIndex SdProjectExploreModel::parent(const QModelIndex& child) const
 				SdAnimation* anim=(SdAnimation*)idfier;
 				SdSprite* sprite=anim->getSprite();
 				SdProject* proj=sprite->getProject();
-
 				return createIndex(proj->spritePos(sprite),0,sprite);
-
 			}
 		default:
 			assert(0);
@@ -112,6 +109,7 @@ int SdProjectExploreModel::rowCount(const QModelIndex& parent)const
 	}
 	return 0;
 }
+
 int SdProjectExploreModel::columnCount(const QModelIndex& /*parent*/)const
 {
 	return 1;

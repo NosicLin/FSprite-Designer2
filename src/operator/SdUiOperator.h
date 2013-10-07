@@ -6,7 +6,6 @@ class SdProject;
 class SdSprite;
 class SdAnimation;
 
-
 class SdUiOperator:public QObject 
 {
 	Q_OBJECT

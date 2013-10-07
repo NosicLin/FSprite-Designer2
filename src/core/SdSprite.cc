@@ -13,6 +13,7 @@ SdSprite* SdSprite::create()
 SdSprite::SdSprite()
 {
 	m_project=NULL;
+	m_curAnimation=NULL;
 }
 
 SdSprite::~SdSprite()
@@ -125,6 +126,18 @@ void SdSprite::removeAnimation(int index)
 	delete m_animations[index];
 	m_animations.erase(m_animations.begin()+index);
 }
+
+
+SdAnimation* SdSprite::getCurAnimation()
+{
+	return m_curAnimation;
+}
+
+void SdSprite::setCurAnimation(SdAnimation* anim)
+{
+	m_curAnimation=anim;
+}
+
 
 
 

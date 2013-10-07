@@ -31,7 +31,7 @@ void SdInputDialog::init(const std::string& title,const std::string& value)
 	m_ui=new Ui_input;
 	m_ui->setupUi(this);
 	setTitle(title.c_str());
-	setTextField(title.c_str());
+    setTextField(value.c_str());
 }
 
 

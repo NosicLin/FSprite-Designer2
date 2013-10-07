@@ -10,6 +10,7 @@
 #include "widget/SdProjectExploreModel.h"
 #include "operator/SdOperator.h"
 #include "operator/SdUiOperator.h"
+#include "operator/SdDataOperator.h"
 
 SdProjectExploreWidget::SdProjectExploreWidget()
 {
@@ -75,8 +76,8 @@ void SdProjectExploreWidget::initMenu()
 
 void SdProjectExploreWidget::connectSignal()
 {
-    connect(m_projectExploreView,SIGNAL(pressed(const QModelIndex&)),this,SLOT(mousePress(const QModelIndex&)));
-    connect(ma_renameSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameSprite()));
+	connect(m_projectExploreView,SIGNAL(pressed(const QModelIndex&)),this,SLOT(mousePress(const QModelIndex&)));
+	connect(ma_renameSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameSprite()));
 
 }
 
@@ -88,34 +89,56 @@ void SdProjectExploreWidget::mousePress(const QModelIndex& index)
 	{
 		return ;
 	}
-	if(!(QApplication::mouseButtons()&Qt::RightButton))
-	{
-		return;
-	}
 
-    SdIdentify* idfier=(SdIdentify*)index.internalPointer();
+	SdIdentify* idfier=(SdIdentify*)index.internalPointer();
+
 	switch(idfier->getClassType())
 	{
-		case SD_CLASS_PROJECT:
-			{
-				m_menuProject->popup(QCursor::pos());
-				break;
-			}
 		case SD_CLASS_SPRITE:
 			{
-				m_menuSprite->popup(QCursor::pos());
+				SdSprite*  sprite= (SdSprite*)idfier;
+				SdOperator::data()->setCurSprite(sprite);
 				break;
 			}
+
 		case SD_CLASS_ANIMATION:
 			{
-				m_menuAnimation->popup(QCursor::pos());
+				SdAnimation* anim=(SdAnimation*)idfier;
+				SdOperator::data()->setCurAnimation(anim);
 				break;
 			}
+
 		default:
 			assert(0);
 	}
-}
 
+
+	if((QApplication::mouseButtons()&Qt::RightButton))
+	{
+
+		switch(idfier->getClassType())
+		{
+			case SD_CLASS_PROJECT:
+				{
+					m_menuProject->popup(QCursor::pos());
+					break;
+				}
+			case SD_CLASS_SPRITE:
+				{
+					m_menuSprite->popup(QCursor::pos());
+					break;
+				}
+			case SD_CLASS_ANIMATION:
+				{
+					m_menuAnimation->popup(QCursor::pos());
+					break;
+				}
+			default:
+				assert(0);
+		}
+	}
+
+}
 void SdProjectExploreWidget::destory()
 {
 	delete m_projectExploreView;
