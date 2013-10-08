@@ -9,6 +9,8 @@ class SdCommand
 		virtual void undo()=0;
 		virtual void emitRedoSignal()=0;
 		virtual void emitUndoSignal()=0;
+		virtual void forwardDiscard();
+		virtual void backDiscard();
 };
 
 #endif /*_SD_COMMAND_H_*/

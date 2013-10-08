@@ -2,3 +2,9 @@
 SdCommand::~SdCommand(){}
 
 
+void SdCommand::forwardDiscard()
+{
+}
+void SdCommand::backDiscard()
+{
+}

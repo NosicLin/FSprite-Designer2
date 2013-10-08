@@ -37,12 +37,16 @@ class SdSprite:public SdIdentify
 		void setProject(SdProject* proj);
 
 
+        void addAnimation(int pos,SdAnimation* anim);
 		void addAnimation(SdAnimation* anim);
 
 		SdAnimation* getAnimation(const char* name);
 		SdAnimation* getAnimation(int index);
 		int getAnimationNu();
 		int animationPos(SdAnimation* anim);
+
+		bool hasAnimationWithName(const char* name);
+
 
 		/* animation will not delete */
 		void removeAnimation(SdAnimation* anim);

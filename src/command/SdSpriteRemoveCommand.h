@@ -2,6 +2,7 @@
 #define _SD_SPRITE_REMOVE_COMMAND_H_ 
 
 #include "command/SdCommand.h"
+
 class SdProject;
 class SdSprite;
 
@@ -9,13 +10,14 @@ class SdSpriteRemoveCommand:public SdCommand
 {
 	public:
 		SdSpriteRemoveCommand(SdProject* proj,SdSprite* sprite);
-		~SdSpriteRemoveCommand();
 
 	public:
 		 virtual void redo();
 		 virtual void undo();
 		 virtual void emitRedoSignal();
 		 virtual void emitUndoSignal();
+		 virtual void backDiscard();
+
 
 	private:
 		 SdProject* m_proj;

@@ -11,14 +11,6 @@ SdSpriteAddCommand::SdSpriteAddCommand(SdProject* proj,SdSprite* sprite,int pos)
 	m_sprite=sprite;
 	m_pos=pos;
 }
-SdSpriteAddCommand::~SdSpriteAddCommand()
-{
-	if(!m_proj->hasSprite(m_sprite))
-	{
-		delete m_sprite;
-	}
-}
-
 
 void SdSpriteAddCommand::redo()
 {
@@ -37,7 +29,6 @@ void SdSpriteAddCommand::undo()
 }
 
 
-
 void SdSpriteAddCommand::emitRedoSignal()
 {
 	SdGlobal::getMsgCenter()->emitSpriteAdd(m_proj,m_sprite);
@@ -52,6 +43,11 @@ void SdSpriteAddCommand::emitUndoSignal()
 	SdGlobal::getMsgCenter()->emitCurSpriteChange();
 }
 
+
+void SdSpriteAddCommand::forwardDiscard()
+{
+	delete m_sprite;
+}
 
 
 

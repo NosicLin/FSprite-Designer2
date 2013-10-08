@@ -47,6 +47,12 @@ QModelIndex SdProjectExploreModel::index(int row,
 			}
 		case SD_CLASS_SPRITE:
 			{
+				int anim_nu=((SdSprite*)idfier)->getAnimationNu();
+				if(row>=anim_nu)
+				{
+					qDebug("animation nu is %d,row=%d",anim_nu,row);
+					return QModelIndex();
+				}
 				SdAnimation* anim=((SdSprite*)idfier)->getAnimation(row);
 				return createIndex(row,column,anim);
 			}

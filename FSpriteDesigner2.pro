@@ -38,7 +38,10 @@ SOURCES += \
     src/command/SdSpriteAttrChangeCommand.cc \
     src/command/SdCommand.cc \
     src/command/SdSpriteAddCommand.cc \
-    src/command/SdSpriteRemoveCommand.cc
+    src/command/SdSpriteRemoveCommand.cc \
+    src/command/SdAnimationAttrChangeCommand.cc \
+    src/command/SdAnimationAddCommand.cc \
+    src/command/SdAnimationRemoveCommand.cc
 
 HEADERS  += \
     src/widget/SdMainWindow.h \
@@ -67,7 +70,10 @@ HEADERS  += \
     src/command/SdCommand.h \
     src/util/SdCircleQueue.h \
     src/command/SdSpriteAddCommand.h \
-    src/command/SdSpriteRemoveCommand.h
+    src/command/SdSpriteRemoveCommand.h \
+    src/command/SdAnimationAttrChangeCommand.h \
+    src/command/SdAnimationAddCommand.h \
+    src/command/SdAnimationRemoveCommand.h
 
 
 INCLUDEPATH +=faeris/lib/libfaeris/src \

@@ -12,14 +12,6 @@ SdSpriteRemoveCommand::SdSpriteRemoveCommand(SdProject* proj,SdSprite* sprite)
     m_pos=m_proj->spritePos(m_sprite);
 }
 
-SdSpriteRemoveCommand::~SdSpriteRemoveCommand()
-{
-	if(!m_proj->hasSprite(m_sprite))
-	{
-		delete m_sprite;
-	}
-}
-
 void SdSpriteRemoveCommand::redo()
 {
     m_proj->removeSprite(m_sprite);
@@ -48,3 +40,7 @@ void SdSpriteRemoveCommand::emitUndoSignal()
 }
 
 
+void SdSpriteRemoveCommand::backDiscard()
+{
+	delete m_sprite;
+}

@@ -79,14 +79,35 @@ void SdProjectExploreWidget::initMenu()
 void SdProjectExploreWidget::connectSignal()
 {
 	connect(m_projectExploreView,SIGNAL(pressed(const QModelIndex&)),this,SLOT(mousePress(const QModelIndex&)));
-	connect(ma_renameSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameSprite()));
-	connect(ma_newSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(addSprite()));
-	connect(ma_deleteSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(deleteSprite()));
 
+	/* project */
+	connect(ma_newSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(addSprite()));
+
+	/* sprite */
+	connect(ma_renameSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameSprite()));
+	connect(ma_deleteSprite,SIGNAL(triggered()),SdOperator::ui(),SLOT(deleteSprite()));
+	connect(ma_newAnimation,SIGNAL(triggered()),SdOperator::ui(),SLOT(addAnimation()));
+
+	/* animaition */
+	connect(ma_renameAnimation,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameAnimation()));
+
+
+
+
+
+	/* msg sprite */
     connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteAttributeChange(SdSprite*)),this,SLOT(slotSpriteAttributeChange(SdSprite* )));
 
 	connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteAdd(SdProject*,SdSprite*)),this,SLOT(slotSpriteAdd(SdProject*,SdSprite*)));
 	connect(SdGlobal::getMsgCenter(),SIGNAL(signalSpriteRemove(SdProject*,SdSprite*)),this,SLOT(slotSpriteRemove(SdProject*,SdSprite*)));
+
+
+
+	/* msg animtion */
+	connect(SdGlobal::getMsgCenter(),SIGNAL(signalAnimationAttributeChange(SdAnimation*)),this,SLOT(slotAnimationAttributeChange(SdAnimation*)));
+
+	connect(SdGlobal::getMsgCenter(),SIGNAL(signalAnimationAdd(SdSprite* ,SdAnimation*)),this,SLOT(slotAnimationAdd(SdSprite*,SdAnimation*)));
+    connect(SdGlobal::getMsgCenter(),SIGNAL(signalAnimationRemove(SdSprite*,SdAnimation*)),this,SLOT(slotAnimationRemove(SdSprite*,SdAnimation*)));
 
 
 }
@@ -173,6 +194,23 @@ void SdProjectExploreWidget::slotSpriteAdd(SdProject* /*proj*/,SdSprite* /*sprit
 }
 
 void SdProjectExploreWidget::slotSpriteRemove(SdProject* /*proj*/,SdSprite* /*sprite*/)
+{
+	m_projectExploreModel->refresh();
+}
+
+void SdProjectExploreWidget::slotAnimationAttributeChange(SdAnimation* /* anim */) 
+{
+	m_projectExploreModel->refresh();
+}
+
+
+void SdProjectExploreWidget::slotAnimationAdd(SdSprite* /* sprite */,SdAnimation* /* anim */)
+{
+	m_projectExploreModel->refresh();
+}
+
+
+void SdProjectExploreWidget::slotAnimationRemove(SdSprite* /* sprite */,SdAnimation* /* anim */)
 {
 	m_projectExploreModel->refresh();
 }

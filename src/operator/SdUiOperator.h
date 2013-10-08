@@ -14,11 +14,18 @@ class SdUiOperator:public QObject
 		~SdUiOperator();
 
 	public slots:
-		void renameProject(SdProject* proj);
-		void renameAnimation(SdAnimation* anim);
-		void renameSprite(SdSprite* sprite);
-		void renameSprite();
 
+		/* animation */
+		void renameAnimation();
+		void renameAnimation(SdAnimation* anim);
+		void addAnimation();
+		void deleteAnimation();
+		void deleteAnimation(SdSprite* sprite,SdAnimation* anim);
+
+
+		/* sprite */
+		void renameSprite();
+		void renameSprite(SdSprite* sprite);
 		void addSprite();
 		void deleteSprite();
         void deleteSprite(SdProject* proj,SdSprite* sprite);

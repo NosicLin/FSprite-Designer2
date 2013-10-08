@@ -8,6 +8,13 @@
 
 class SdBone;
 class SdSprite;
+
+class SdAnimationAttribute
+{
+	public:
+		std::string name;
+};
+
 class SdAnimation :public SdIdentify
 {
 	public:
@@ -25,6 +32,11 @@ class SdAnimation :public SdIdentify
 		SdSprite* getSprite();
 		void setSprite(SdSprite* sprite);
 
+		void setAttribute(const SdAnimationAttribute& attr);
+		SdAnimationAttribute getAttribute();
+
+
+
 	public:
 		void addBone(SdBone* bone);
 		void removeBone(SdBone* bone);
@@ -39,11 +51,22 @@ class SdAnimation :public SdIdentify
 	private:
 		std::vector<SdBone*> m_bones;
 		SdBone* m_root;
-		std::string m_name;
-
 		SdSprite* m_sprite;
+
+		/* attribute */
+		SdAnimationAttribute m_attr;
 };
 
 
+
 #endif /*_SD_ANIMATION_H_*/
+
+
+
+
+
+
+
+
+
 

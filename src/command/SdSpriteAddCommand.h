@@ -9,13 +9,13 @@ class SdSpriteAddCommand :public SdCommand
 {
 	public:
 		SdSpriteAddCommand(SdProject* proj,SdSprite* sprite,int pos);
-		~SdSpriteAddCommand();
 
 	public:
 		 virtual void redo();
 		 virtual void undo();
-		 virtual void emitRedoSignal();
-		 virtual void emitUndoSignal();
+         virtual void emitRedoSignal();
+         virtual void emitUndoSignal();
+         virtual void forwardDiscard();
 
 	private:
 		 SdProject* m_proj;

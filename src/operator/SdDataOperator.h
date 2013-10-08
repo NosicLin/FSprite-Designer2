@@ -27,8 +27,16 @@ class SdDataOperator
 		void setSpriteName(SdSprite* sprite,const char* name);
 
 
+
+		/* animation */
 		void setCurAnimation(SdAnimation* anim);
 		SdAnimation* getCurAnimation();
+
+		void setAnimationName(SdAnimation* anim,const char* name);
+
+		void addAnimation(SdSprite* sprite,SdAnimation* anim);
+		void addAnimation(SdSprite* sprite,SdAnimation* anim,int pos);
+		void removeAnimation(SdSprite* sprite,SdAnimation* anim);
 
 
 		/* redo/undo */

@@ -7,6 +7,7 @@
 class SdProjectExploreModel;
 class SdSprite;
 class SdProject;
+class SdAnimation;
 
 class SdProjectExploreWidget:public QWidget
 {
@@ -18,9 +19,16 @@ class SdProjectExploreWidget:public QWidget
 
 	public slots:
 		void mousePress(const QModelIndex& index);
+
+		/* sprite */
 		void slotSpriteAttributeChange(SdSprite* sprite);
 		void slotSpriteAdd(SdProject* proj,SdSprite* sprite);
 		void slotSpriteRemove(SdProject* proj,SdSprite* sprite);
+
+		/* animation */
+		void slotAnimationAttributeChange(SdAnimation* anim);
+		void slotAnimationAdd(SdSprite* sprite,SdAnimation* anim);
+		void slotAnimationRemove(SdSprite* sprite,SdAnimation* anim);
 
 
 	protected:

@@ -2,11 +2,17 @@
 #include "operator/SdDataOperator.h"
 #include "core/SdProject.h"
 #include "core/SdSprite.h"
+#include "core/SdAnimation.h"
 #include "SdGlobal.h"
+#include "SdMsgCenter.h"
 #include "command/SdCommand.h"
 #include "command/SdSpriteAttrChangeCommand.h"
 #include "command/SdSpriteAddCommand.h"
 #include "command/SdSpriteRemoveCommand.h"
+#include "command/SdAnimationAttrChangeCommand.h"
+#include "command/SdAnimationAddCommand.h"
+#include "command/SdAnimationRemoveCommand.h"
+
 
 
 SdDataOperator::SdDataOperator()
@@ -27,7 +33,7 @@ SdProject* SdDataOperator::getCurProject()
 void SdDataOperator::setCurProject(SdProject* proj)
 {
 	SdGlobal::setCurProject(proj);
-	/* emit signal */
+    SdGlobal::getMsgCenter()->emitCurProjectChange();
 }
 
 /* cur sprite */
@@ -39,7 +45,7 @@ SdSprite* SdDataOperator::getCurSprite()
 void SdDataOperator::setCurSprite(SdSprite* sprite)
 {
 	SdGlobal::setCurSprite(sprite);
-	/* emit signal */
+	SdGlobal::getMsgCenter()->emitCurSpriteChange();
 }
 
 
@@ -101,9 +107,64 @@ SdAnimation* SdDataOperator::getCurAnimation()
 
 void SdDataOperator::setCurAnimation(SdAnimation* anim)
 {
-	SdGlobal::setCurAnimation(anim);
-	/* emit signal */
+	SdSprite* sprite=anim->getSprite();
+
+	if(sprite!=getCurSprite())
+	{
+		SdGlobal::setCurSprite(sprite);
+		SdGlobal::setCurAnimation(anim);
+		SdGlobal::getMsgCenter()->emitCurSpriteChange();
+		SdGlobal::getMsgCenter()->emitCurAnimationChange();
+	}
+	else 
+	{
+		SdGlobal::setCurAnimation(anim);
+		SdGlobal::getMsgCenter()->emitCurAnimationChange();
+	}
 }
+
+
+
+
+void SdDataOperator::setAnimationName(SdAnimation* anim,const char* name)
+{
+	SdProject* proj=getCurProject();
+	SdAnimationAttribute attr_old=anim->getAttribute();
+	SdAnimationAttribute attr_new=anim->getAttribute();
+	attr_new.name=std::string(name);
+
+	SdAnimationAttrChangeCommand* cmd=new SdAnimationAttrChangeCommand(anim,attr_old,attr_new);
+	proj->pushCommand(cmd);
+	cmd->redo();
+	cmd->emitRedoSignal();
+}
+
+
+void SdDataOperator::addAnimation(SdSprite* sprite,SdAnimation* anim)
+{
+	int anim_nu=sprite->getAnimationNu();
+	addAnimation(sprite,anim,anim_nu);
+}
+
+void SdDataOperator::addAnimation(SdSprite* sprite,SdAnimation* anim,int pos)
+{
+    SdProject* proj=getCurProject();
+    SdAnimationAddCommand* cmd=new SdAnimationAddCommand(sprite,anim,pos);
+	proj->pushCommand(cmd);
+	cmd->redo();
+	cmd->emitRedoSignal();
+}
+
+void SdDataOperator::removeAnimation(SdSprite* sprite,SdAnimation* anim)
+{
+	SdProject* proj=getCurProject();
+	SdAnimationRemoveCommand* cmd=new SdAnimationRemoveCommand(sprite,anim);
+	proj->pushCommand(cmd);
+	cmd->redo();
+	cmd->emitRedoSignal();
+}
+
+
 
 
 

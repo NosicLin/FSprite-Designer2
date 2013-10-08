@@ -58,7 +58,8 @@ SdAnimation* SdGlobal::getCurAnimation()
 void SdGlobal::setCurAnimation(SdAnimation* anim)
 {
 	SdSprite* sprite=SdGlobal::getCurSprite();
-	assert(sprite);
+	assert(anim->getSprite()==sprite);
+
 	sprite->setCurAnimation(anim);
 }
 

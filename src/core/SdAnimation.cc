@@ -23,12 +23,12 @@ const char* SdAnimation::className()
 
 void SdAnimation::setName(const char* name)
 {
-	m_name=std::string(name);
+	m_attr.name=std::string(name);
 }
 
 std::string SdAnimation::getName()
 {
-	return m_name;
+	return m_attr.name;
 }
 
 SdSprite* SdAnimation::getSprite()
@@ -39,6 +39,16 @@ SdSprite* SdAnimation::getSprite()
 void SdAnimation::setSprite(SdSprite* sprite)
 {
 	m_sprite=sprite;
+}
+
+void SdAnimation::setAttribute(const SdAnimationAttribute& attr)
+{
+	m_attr=attr;
+}
+
+SdAnimationAttribute SdAnimation::getAttribute()
+{
+	return m_attr;
 }
 
 
