@@ -90,6 +90,9 @@ void SdProjectExploreWidget::connectSignal()
 
 	/* animaition */
 	connect(ma_renameAnimation,SIGNAL(triggered()),SdOperator::ui(),SLOT(renameAnimation()));
+	connect(ma_deleteAnimation,SIGNAL(triggered()),SdOperator::ui(),SLOT(deleteAnimation()));
+
+
 
 
 
